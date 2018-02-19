@@ -1,0 +1,53 @@
+<!-- This is a view for dispaying Login form -->
+<!-- It's controller is "login_panel.php" -->
+<!-- But the form submitted here goes to the controller "submit_login.php" for validation -->
+
+<!DOCTYPE html>
+<html>
+<head>
+     <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Login Page</title>
+    <link rel="stylesheet" href="../styles/login.css"> 
+    
+</head>
+<body>
+
+    <div class="header">
+         <div id="abuad-logo"> <a href="http://abuad.edu.ng" id="logo"><img src="http://www.abuad.edu.ng/wp-content/uploads/2017/03/logo-5.png"  data-retina="http://www.abuad.edu.ng/wp-content/uploads/2017/03/logo-6.png"  alt="Afe Babalola University" /></a></div>
+
+      <h1>ABUAD Catholic Church</h1>
+  </div>
+
+  <div class="topnav">
+      <a href="?controller=home">Home</a><br>	
+  </div>
+  <div class="main">
+
+    <div class="container">
+
+      <form name="login" action="?controller=login_panel" onsubmit="return validateForm()" method="POST">
+         Enter username:<input type="text" name="username" minlength="8" maxlength="20" required><br><br>
+         Enter Password:<input type="password" name="password" minlength="8" required><br><br>
+
+         <input type="submit" value="Login"><br>
+
+         Don't have an account? <a href="?controller=register">Sign Up</a><br>
+
+
+         <?php if(!empty($errorMessages)):?>
+            <?php foreach($errorMessages as $key => $message): ?>
+               <div style="color:red; font-size:50px;"><span>Error:</span><?php echo $message; ?></div>
+           <?php endforeach; ?>
+       <?php endif; ?>
+   </form>
+</div>
+</div>
+<footer role="footer">
+<div class="footer">
+  &copy;LAWRANT Group
+</div>
+    </footer>
+    <script type="text/javascript" src="../scripts/login_page.js"></script>
+</body>
+</html>

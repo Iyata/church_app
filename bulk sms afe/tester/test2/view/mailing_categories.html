@@ -1,0 +1,89 @@
+<!-- This is a view for home page. It has links to other sub categories -->
+<!-- It's controller is "home.php" -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>mailing categories</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="../styles/mailing_categories.css">
+    
+</head>
+<body>
+
+  <div class="header">
+       <div id="abuad-logo"> <a href="http://abuad.edu.ng" id="logo"><img src="http://www.abuad.edu.ng/wp-content/uploads/2017/03/logo-5.png"  data-retina="http://www.abuad.edu.ng/wp-content/uploads/2017/03/logo-6.png"  alt="Afe Babalola University" /></a></div>
+
+    <h1>ABUAD Catholic Church</h1>
+  </div>
+
+  <div class="topnav">
+    
+    <a href="?controller=register">Sign Up</a>
+    <a href="?controller=logout">Logout</a>
+   <a>Login</a>
+
+ 
+ <a href="home.html">Home</a>
+</div>
+
+<div class="row">
+  <div class="column side">
+    <div class="nav">
+     <ul>
+      <li><a href="?controller=view_controller"><h1>View existing categories</h1></a></li><br><hr>
+      <li><a href="?controller=submit_category"><h1>Add Category</h1></a></li><br><hr>
+      <li> <a href="?controller=delete_category"><h1>Delete Category</h1></a></li>
+      <li> <a href="?controller=update_cat_con"><h1>Update Category</h1></a></li>
+    </ul>
+  </div>
+</div>
+<div class="column middle">
+  <div>
+
+   <img class="mySlides w3-animate-fading" src="../image/images16.jpg" style="width:100%; height:500px;" >
+   <img class="mySlides w3-animate-fading" src="../image/images20.jpg" style="width:100%; height:500px;">
+   <img class="mySlides w3-animate-fading" src="../image/images11.jpg" style="width:100%;height:500px;">
+   <img class="mySlides w3-animate-fading" src="../image/france_st_michel_church_217281.jpg" style="width:100%;height:500px;">
+       <img class="mySlides w3-animate-fading" src="../image/church_mosaic_194351.jpg" style="width:100%;height:500px;">
+       <img class="mySlides w3-animate-fading" src="../image/jesus_christ_son_of_god_264072.jpg" style="width:100%;height:500px;">
+       <img class="mySlides w3-animate-fading" src="../image/facade_gothic_churches_241012.jpg" style="width:100%;height:500px;">
+       <img class="mySlides w3-animate-fading" src="../image/images19.jpg" style="width:100%;height:500px;">
+       <img class="mySlides w3-animate-fading" src="../image/images17.jpg" style="width:100%;height:500px;">
+ </div>
+
+</div>
+<div class="column side">
+   <div class="activities">
+      <h2>CHURCH ACTIVITIES</h2>
+      <ul>
+        <div class="activities-div">
+          <?php foreach($activities as $activity): ?>
+            <li>
+              <h3><?php echo "Activity : ".$activity['name']."<br>"."Venue : ".$activity['venue']."<br>" ?>
+                <p><?php echo "Date : ".$activity['date']."<br>"."Time : ".$activity['time'] ?></p>
+                </h3>
+                <hr>
+            <?php endforeach; ?>
+
+            
+              <h1>
+                <a href="?controller=church_activity_con" style="background-color:white; color:black;">Add new activity</a><br>
+                <a href="?controller=delete_activity" style="background-color:white; color:black;">Delete Activity</a>
+              </h1>
+                
+          </div>
+          
+        </ul>
+      </div>
+</div>
+</div>
+
+<div class="footer">
+  &copy;LAWRANT Group
+    </div>
+    <script type="text/javascript" src="../scripts/mailing_categories.js"></script>
+</body>
+</html>
+

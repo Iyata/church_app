@@ -1,0 +1,83 @@
+<!-- This is a view for home page. It has links to other sub activityegories -->
+<!-- It's controller is "delete_activity.php" -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Delete Activity</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="../styles/select_activity_del.css">
+</head>
+<body>
+ <header role="banner">
+  <div class="header">
+       <div id="abuad-logo"> <a href="http://abuad.edu.ng" id="logo"><img src="http://www.abuad.edu.ng/wp-content/uploads/2017/03/logo-5.png"  data-retina="http://www.abuad.edu.ng/wp-content/uploads/2017/03/logo-6.png"  alt="Afe Babalola University" /></a></div>
+
+    <h1>ABUAD Catholic Church</h1>
+  </div>
+
+  <div class="topnav">
+    <a href="?controller=home">Home</a>
+  </div>
+   </header>
+  <main role="main"> 
+   <div class="container">
+     
+     <form name="activity_del" action="?controller=delete_activity" onsubmit="return validateForm()" method="POST">
+      <h1>Select activity to delete</h1>
+      <?php foreach($activities as $activity) :?>
+       <div class="radio">
+        <input type="radio" name="activity" value="<?php echo $activity['id'];?>"><?php echo $activity['name'];?><br></div>
+      <?php endforeach; ?>
+
+      <input type="submit" value="Delete">
+
+      <?php if(!empty($successMessages)) :?>
+        <?php foreach($successMessages as $key => $message): ?>
+         <div><span>Success:</span><?php echo $message?></div>
+       <?php endforeach; ?>
+     <?php endif; ?>
+   </form>
+ </div>
+      <div>
+
+   <img class="mySlides w3-animate-fading" src="../image/bible_book_catholic_265748.jpg" style="width:100%; height:500px;" >
+  <img class="mySlides w3-animate-fading" src="../image/images12.jpg" style="width:100%;height:500px;">
+  <img class="mySlides w3-animate-fading" src="../image/images15.jpg" style="width:100%;height:500px;">
+      <img class="mySlides w3-animate-fading" src="../image/images17.jpg" style="width:100%;height:500px;">
+      <img class="mySlides w3-animate-fading" src="../image/jesus_christ_son_of_god_264072.jpg" style="width:100%;height:500px;">
+      <img class="mySlides w3-animate-fading" src="../image/images22.jpg" style="width:100%;height:500px;">
+      <img class="mySlides w3-animate-fading" src="../image/images16.jpg" style="width:100%;height:500px;">
+</div>
+        <div class="activities">
+      <h2>CHURCH ACTIVITIES</h2>
+      <ul>
+        <div class="activities-div">
+          <?php foreach($activities as $activity): ?>
+            <li>
+              <h3><?php echo "Activity : ".$activity['name']."<br>"."Venue : ".$activity['venue']."<br>" ?>
+                <p><?php echo "Date : ".$activity['date']."<br>"."Time : ".$activity['time'] ?></p>
+                </h3>
+                <hr>
+            <?php endforeach; ?>
+
+            
+              <h1>
+                <a href="?controller=church_activity_con" style="background-color:white; color:black;">Add new activity</a><br>
+                <a href="?controller=delete_activity" style="background-color:white; color:black;">Delete Activity</a>
+              </h1>
+                
+          </div>
+          
+        </ul>
+      </div>
+</main>
+<footer role="footer">
+<div class="footer">
+  &copy;LAWRANT Group
+</div>
+    </footer>
+    <script type="text/javascript" src="../scripts/select_activity_del.js"></script>  
+</body>
+
+</html>

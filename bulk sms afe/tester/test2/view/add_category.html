@@ -1,0 +1,89 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+ <title>Add Category</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="../styles/add_category.css">
+</head>
+<body>
+<header role="banner">
+  <div class="header">
+       <div id="abuad-logo"> <a href="http://abuad.edu.ng" id="logo"><img src="http://www.abuad.edu.ng/wp-content/uploads/2017/03/logo-5.png"  data-retina="http://www.abuad.edu.ng/wp-content/uploads/2017/03/logo-6.png"  alt="Afe Babalola University" /></a></div>
+
+    <h1>ABUAD Catholic Church</h1>
+  </div>
+
+  <div class="topnav">
+    <a href="home.html">Home</a>
+  </div>
+    </header>
+  <main role="main">
+      <div id="container">
+   <div class="form">
+
+     <form action="?controller=submit_category" method="POST">
+         <center><lagend><h1>ADD CATEGORY</h1></lagend></center>
+       Enter category name:<br>  <input type="text" name="cat_name" minlength="4" maxlength="20" pattern="[a-zA-Z\s]+" title="Use only english alphabets a-z or A-Z" required><br><br>
+       Upload phone numbers:<br> <input type="file" name="csv_upload"><br>
+       OR paste numbers: <br><textarea placeholder="paste here" name="cat_phones"></textarea><br>
+
+         <center> <input type="submit" value="ADD"></center>
+
+       <?php if(!empty($successMessages)) :?>
+         <?php foreach($successMessages as $key => $message):?>
+          <div><span>Success:</span><?php echo $message ?></div>
+        <?php endforeach;?>
+      <?php endif; ?>
+
+      <?php if(!empty($errorMessages)):?>
+       <?php foreach($errorMessages as $key => $message): ?>
+        <div><span>Error:</span><?php echo $message; ?></div>
+      <?php endforeach; ?>
+    <?php endif; ?>
+
+  </form>
+</div>
+           <div>
+
+   <img class="mySlides w3-animate-fading" src="../image/bible_book_catholic_265748.jpg" style="width:100%; height:500px;" >
+  <img class="mySlides w3-animate-fading" src="../image/images12.jpg" style="width:100%;height:500px;">
+  <img class="mySlides w3-animate-fading" src="../image/images15.jpg" style="width:100%;height:500px;">
+      <img class="mySlides w3-animate-fading" src="../image/images17.jpg" style="width:100%;height:500px;">
+      <img class="mySlides w3-animate-fading" src="../image/jesus_christ_son_of_god_264072.jpg" style="width:100%;height:500px;">
+      <img class="mySlides w3-animate-fading" src="../image/images22.jpg" style="width:100%;height:500px;">
+      <img class="mySlides w3-animate-fading" src="../image/images16.jpg" style="width:100%;height:500px;">
+</div>
+        <div class="activities">
+      <h2>CHURCH ACTIVITIES</h2>
+      <ul>
+        <div class="activities-div">
+          <?php foreach($activities as $activity): ?>
+            <li>
+              <h3><?php echo "Activity : ".$activity['name']."<br>"."Venue : ".$activity['venue']."<br>" ?>
+                <p><?php echo "Date : ".$activity['date']."<br>"."Time : ".$activity['time'] ?></p>
+                </h3>
+                <hr>
+            <?php endforeach; ?>
+
+            
+              <h1>
+                <a href="?controller=church_activity_con" style="background-color:white; color:black;">Add new activity</a><br>
+                <a href="?controller=delete_activity" style="background-color:white; color:black;">Delete Activity</a>
+              </h1>
+                
+          </div>
+          
+        </ul>
+      </div>
+          </div>
+</main>
+    <footer role="footer">
+<div class="footer">
+  &copy;LAWRANT Group
+</div>
+        </footer>
+    <script type="text/javascript" src="../scripts/add_category.js"></script>
+</body>
+</html>

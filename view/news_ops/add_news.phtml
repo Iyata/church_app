@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Add news</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="../../styles/church_activities.css">
+  <link rel="stylesheet" href="../../styles/news_window.css">
+  <link href='https://fonts.googleapis.com/css?family=Bungee Shade' rel='stylesheet'>
+
+</head>
+<body>
+  <header role="banner">
+    <img style="width:100%;height:200px;margin:0;" src="../../image/saint%20francis%20of%20assisi.jpg">
+  </header>
+  <div class="topnav">
+    <ul>
+      <li><a href="../../?controller=reg_ops/register">Sign Up</a></li>
+      <!-- This should later link to a user profile page -->
+      <?php if(!isset($_SESSION['logged_in'])): ?>
+        <li><a href="../../?controller=auth_ops/login_panel">Login</a></li>
+      <?php elseif(isset($_SESSION['logged_in'])): ?>
+        <li><a href="../../?controller=auth_ops/logout">logout</a></li>
+        <li><a><?php echo $_SESSION['logged_in'] ?></a></li>
+      <?php endif; ?>
+      <li class="dropdown">
+        <a href="javascript:void(0)" class="dropbtn">Activities</a>
+        <div class="dropdown-content">
+          <div class="row">
+
+            <div class="column side1">
+              <span>General Parish Announcements</span>
+              <a href="../../?controller=announce_ops/general_view_con">View All</a>
+              <?php if(isset($_SESSION['logged_in'])): ?>
+                <a href="../../?controller=announce_ops/general_add_con">Add New</a>
+                <a href="../../?controller=announce_ops/general_delete_con">Delete Some</a>
+              <?php endif; ?>
+            </div>
+
+            <div class="column side1">
+              <span>Marriage Banns</span>
+              <a href="../../?controller=announce_ops/marriage_bann_show_con">View Banns</a>
+              <?php if(isset($_SESSION['logged_in'])): ?>
+                <a href="../../?controller=announce_ops/marriage_bann_add_con">Add New Bann</a>
+                <a href="../../?controller=announce_ops/marriage_bann_del_con">Delete Bann</a>
+              <?php endif; ?>
+
+            </div>
+
+            <div class="column side1">
+              <span>Church Collections</span>
+              <a href="../../?controller=announce_ops/collection_view_con">View Collections</a>
+              <?php if(isset($_SESSION['logged_in'])): ?>
+                <a href="../../?controller=announce_ops/collection_add_con">Add Collections</a>
+                <a href="../../?controller=announce_ops/collection_delete_con">Delete Collections</a>
+              <?php endif; ?>
+            </div>
+
+          </div>
+        </div>
+      </li>
+
+      <li class="dropdown">
+        <a href="javascript:void(0)" class="dropbtn">Announcements</a>
+        <div class="dropdown-content">
+          <div class="row">
+            <center> <p>Click to view the activities of various units of the church</p></center>
+            <div class="column side1">
+
+              <span>Marriage Banns</span>
+              <a href="../../?controller=announce_ops/marriage_bann_show_con">View Banns</a>
+              <a href="../../?controller=announce_ops/marriage_bann_add_con">Add New Bann</a>
+              <a href="../../?controller=announce_ops/marriage_bann_del_con">Delete Bann</a>
+            </div>
+            <div class="column side1">
+              <span>Church Collections</span>
+              <a href="../../?controller=announce_ops/collection_view_con">View Collections</a>
+              <a href="../../?controller=announce_ops/collection_add_con">Add Collections</a>
+              <a href="../../?controller=announce_ops/collection_delete_con">Delete Collections</a>
+            </div>
+          </div>
+        </div>
+      </li>
+
+      <li><a href="#">News</a></li>
+      <li><a href="../../?controller=home/general_home">Home</a></li>
+
+    </ul>
+  </div>
+  <main role="main">
+    <marquee><span class="slide">SAINT FRANCIS CATHOLIC CHURCH GALADIMAWA</span></marquee>
+    <div id="container">
+      <div class="form">
+       <form action="?controller=news_ops/add_news_con" method="POST" style="text-align:center; padding-top: 5%">
+
+        <!-- Catch error messages -->
+        <?php if(!empty($successMessages)) :?>
+         <?php foreach($successMessages as $key => $message):?>
+          <div><span>Success:</span><?php echo $message ?></div>
+        <?php endforeach;?>
+      <?php endif; ?>
+
+      <?php if(!empty($errorMessages)):?>
+       <?php foreach($errorMessages as $key => $message): ?>
+        <div><span>Error:</span><?php echo $message; ?></div>
+      <?php endforeach; ?>
+    <?php endif; ?>
+
+    <input type="text" name="news_title" placeholder='News Title' maxlength="50"><br><br>
+    <input type="text" name="news_caption" placeholder='News caption' maxlength="100"><br><br>
+    <input type="text" name="link" placeholder='News link' size="50"><br><br>
+    <input type="date" name="date" placeholder="Mondate, Tuesdate; OR, Mondates and Tuesdates" size="45"><br><br>
+    <input type="submit" value="Add News Feed">
+  </form>
+</div>
+</div>
+</main>
+<footer role="footer">
+  <div class="footer">
+    <span Copyright>&copy;LAWRANT Group</span>
+
+  </div>
+</footer>
+</body>
+</html>

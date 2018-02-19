@@ -1,0 +1,125 @@
+<!-- This is a view for home page. It has links to other sub categories -->
+<!-- It's controller is "home.php" -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>home2</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="../styles/home.css">
+  
+
+</head>
+<body>
+
+  <div class="header">
+       <div id="abuad-logo"> <a href="http://abuad.edu.ng" id="logo"><img src="http://www.abuad.edu.ng/wp-content/uploads/2017/03/logo-5.png"  data-retina="http://www.abuad.edu.ng/wp-content/uploads/2017/03/logo-6.png"  alt="Afe Babalola University" /></a></div>
+
+    <h1>ABUAD Catholic Church</h1>
+  </div>
+
+  <div class="topnav">
+
+    <a href="?controller=register">Sign Up</a>
+
+    <a href="?controller=logout">Logout</a>
+    
+    <!-- This should later link to a user profile page -->
+    <a><?php echo $_SESSION['logged_in']; ?></a>
+
+    <a href="?controller=home">Home</a>
+  </div>
+  <main role="main">
+  <div class="row">
+    <div class="column side">
+     <div class="nav">
+       <ul>
+         <li><a href="?controller=mailing_categories"><h1>Manage mailing categories</h1></a><br></li>
+         <li> <a href="?controller=history"><h1>History</h1></a><br></li><br>
+       </ul>
+     </div>
+    <div class="activities">
+      <h2>CHURCH ACTIVITIES</h2>
+      <ul>
+        <div class="activities-div">
+          <?php foreach($activities as $activity): ?>
+            <li>
+              <h3><?php echo "Activity : ".$activity['name']."<br>"."Venue : ".$activity['venue']."<br>" ?>
+                <p><?php echo "Date : ".$activity['date']."<br>"."Time : ".$activity['time'] ?></p>
+                </h3>
+                <hr>
+            <?php endforeach; ?>
+
+            
+              <h1>
+                <a href="?controller=church_activity_con" style="background-color:white; color:black;">Add new activity</a><br>
+                <a href="?controller=delete_activity" style="background-color:white; color:black;">Delete Activity</a>
+              </h1>
+                
+          </div>
+          
+        </ul>
+      </div>
+    </div>
+    <div class="column middle">
+     <div class="container1">
+
+      <form name="compose_message" action="?controller=submit_message" onsubmit="return validateForm()" method='POST'>
+
+        <h2>COMPOSE MESSAGE</h2>
+
+        <!--Error or success submission handlers-->
+        <?php if (!empty($successMessages)):?>
+          <?php foreach ($successMessages as $key => $message): ?>
+            <div style="color:blue; font-size:20px;"><span>Success: </span><?php echo $message ?></div>
+          <?php endforeach; ?>
+        <?php endif; ?>
+
+        <?php if (!empty($errorMessages)):?>
+          <?php foreach ($errorMessages as $key => $message): ?>
+            <div style="color:red; font-size:20px;"><span>Error: </span><?php echo $message ?></div>
+          <?php endforeach; ?>
+        <?php endif; ?>
+
+        <?php if(!empty($channelMessage)):?>
+          <?php foreach($channelMessage as $key => $message): ?>
+            <div style="color:red; font-size:20px;"><span>Error: </span><?php echo $message?></div>
+          <?php endforeach; ?>
+        <?php endif; ?>
+
+        From:<input type="text" name="sender" placeholder='sender' maxlength="11" pattern="[a-zA-Z\s]+" title="Use only english alphabets a-z or A-Z" value="Fr Tony" required readonly><br><br>
+
+        Message<textarea rows="5" cols="50" name="message" placeholder="message" minlength="10" maxlength="160" required></textarea><br><br>
+
+        To:<textarea name='pasted_num' placeholder='receiver'></textarea>
+
+        Or select category:
+        <select name="dbcontact">
+          <option value=""></option>
+          <option value="*">All</option>
+          <?php foreach ($my_categories as $category):?>
+            <option value="<?php echo $category['dept_id']?>"><?php echo $category['dept_name']?></option>
+          <?php endforeach;?> 
+          
+        </select><br><br>
+
+        <div class="form-group">
+          New mailing list (.csv files only) 
+          <input type="file" name="csv_list"><br><br>
+          <input type="submit" value="Send">
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+  </main>
+<footer role="footer">
+<div class="footer">
+  &copy;LAWRANT Group
+</div>
+    </footer>
+               <script type="text/javascript" src="../scripts/home.js">
+  </script>
+</body>
+</html>

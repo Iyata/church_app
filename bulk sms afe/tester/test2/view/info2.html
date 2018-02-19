@@ -1,0 +1,115 @@
+<!-- This is a view for home page. It has links to other sub categories -->
+<!-- It's controller is "home.php" -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+ <title>home1</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link href='https://fonts.googleapis.com/css?family=Monofett' rel='stylesheet'>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../styles/info.css">
+
+</head>
+<body>
+
+  <div class="header">
+       <div id="abuad-logo"> <a href="http://abuad.edu.ng" id="logo"><img src="http://www.abuad.edu.ng/wp-content/uploads/2017/03/logo-5.png"  data-retina="http://www.abuad.edu.ng/wp-content/uploads/2017/03/logo-6.png"  alt="Afe Babalola University" /></a></div>
+
+    <h1>ABUAD Catholic Church</h1>
+  </div>
+
+  <div class="topnav">
+
+    <a href="?controller=register">Sign Up</a>
+
+    <a href="?controller=logout">Logout</a>
+    
+    <!-- This should later link to a user profile page -->
+    <a><?php echo $_SESSION['logged_in']; ?></a>
+
+    <a href="?controller=home">Home</a>
+  </div>
+  <main role="main">
+  <div class="row">
+    <div class="column side">
+     <div class="activities">
+      <h2>CHURCH ACTIVITIES</h2>
+      <ul>
+        <div class="activities-div">
+          <?php foreach($activities as $activity): ?>
+            <li>
+              <h3><?php echo "Activity : ".$activity['name']."<br>"."Venue : ".$activity['venue']."<br>" ?>
+                <p><?php echo "Date : ".$activity['date']."<br>"."Time : ".$activity['time'] ?></p>
+                </h3>
+                <hr>
+            <?php endforeach; ?>
+
+            
+              <h1>
+                <a href="?controller=church_activity_con" style="background-color:white; color:black;">Add new activity</a><br>
+                <a href="?controller=delete_activity" style="background-color:white; color:black;">Delete Activity</a>
+              </h1>
+                
+          </div>
+          
+        </ul>
+      </div>
+
+    </div>
+    <div class="column middle">
+     <div class="image navigation">
+        <h2 style="color:white;">CONTACT US</h2>
+       <div class="image-nav">
+        <div class="gallery">
+          <a target="_blank" href="img_fjords.jpg">
+            <img src="../image/doc.jpg" alt="Esco" class="img">
+        </a>
+        <div class="desc">Parish Priest<br>
+          08053110117
+          
+      </div>
+            <div class="social-media">
+            <a href="#" class="fa fa-facebook"></a>
+<a href="#" class="fa fa-twitter"></a>
+                <a href="#" class="fa fa-google"></a>
+                <a href="#" class="fa fa-instagram"></a>
+            </div>    
+  </div>
+<hr>
+  <div class="gallery">
+      <a target="_blank" href="img_forest.jpg">
+        <img src="Ashwarya%2520Rai.jpg" alt="Exsco" width="130" height="150">
+    </a>
+    <div class="desc">Add a description of the image here</div>
+</div>
+
+<div class="gallery">
+  <a target="_blank" href="Ashwarya%252">
+    <img src="Ashwarya%2520Rai.jpg" alt="Exsco" width="130" height="150">
+</a>
+<div class="desc">Add a description of the image here</div>
+</div>
+
+<div class="gallery">
+  <a target="_blank" href="Ashwarya%2520">
+    <img src="Ashwarya%2520Rai.jpg" alt="Esco" width="130" height="150">
+</a>
+<div class="desc">Add a description of the image here</div>
+</div>
+</div>
+    </div>
+</div>
+      </div>
+  </main>
+<footer role="footer">
+<div class="footer">
+  &copy;LAWRANT Group
+</div>
+    </footer>
+               <script type="text/javascript" src="../scripts/home.js">
+  </script>
+</body>
+</html>

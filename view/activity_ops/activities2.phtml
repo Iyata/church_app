@@ -1,0 +1,138 @@
+<!-- This is a view for home page. It has links to other sub categories -->
+<!-- It's controller is "home.php" -->
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Activities</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="../../styles/activiities.css">
+        <link rel="stylesheet" href="../../styles/news_window.css">
+        <link rel="stylesheet" href="../../https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link href='https://fonts.googleapis.com/css?family=Bungee Shade' rel='stylesheet'>
+        <style>
+        </style>
+
+
+    </head>
+    <body>
+        <header role="banner">
+            <img style="width:100%;height:200px;margin:0;" src="../../image/saint%20francis%20of%20assisi.jpg">
+        </header>
+        <div class="topnav">
+            <ul>
+  <li><a href="#home">Home</a></li>
+  <li><a href="#news">News</a></li>
+  <li class="dropdown">
+    <a href="javascript:void(0)" class="dropbtn">Activities</a>
+    <div class="dropdown-content">
+        <div class="row">
+       <center> <p>Click to view the activities of various units of the church</p></center>
+            <div class="column side1">
+                
+       <span>COMMUNITIES</span>
+      <a href="#">Igede Catholic Community</a>
+      <a href="#">Link 2</a>
+      <a href="#">Link 3</a>
+        </div>
+           <div class="column middle1">
+                 <span>SOCITIES</span>
+    <a href="#">Link 1</a>
+      <a href="#">Link 2</a>
+      <a href="#">Link 3</a>
+            </div>
+            <div class="column side1">   
+    <span>Side</span>
+     <a href="#">Link 1</a>
+      <a href="#">Link 2</a>
+      <a href="#">Link 3</a>
+                 <a href="#">Link 1</a>
+      <a href="#">Link 2</a>
+      <a href="#">Link 3</a>
+  </div>
+        </div>
+    </div>
+  </li>
+</ul>
+        </div>
+
+        <main role="main">
+
+
+<marquee><span class="slide">SAINT FRANCIS CATHOLIC CHURCH GALADIMAWA</span></marquee>
+            <div class="row">
+                <div class="column middle">
+                    <div class="activities-div">
+                        <center><h1 style="color:black; background-color: #f1f1f1;border-radius:10px;">GENERAL CHURCH ACTIVITIES</h1></center> 
+                        <?php foreach($activities as $activity): ?>
+                        <li>
+                            <h3><?php echo "Activity : ".$activity['name']."<br>"."Venue : ".$activity['venue']."<br>" ?>
+                                <p><?php echo "Date : ".$activity['date']."<br>"."Time : ".$activity['time'] ?></p>
+                            </h3>
+                            <hr>
+                            <?php endforeach; ?>
+
+                            <Center>
+                                <a href="../../?controller=church_activity_con"><input type="submit" value="Add New Activity"></a>
+                                <a href="../../?controller=delete_activity"><input type="submit" value="Delete Activity"></a>
+                            </Center>
+                    </div>
+
+                </div>
+                <div class="column side">
+
+
+                </div>
+                <div class="column side">
+                    <div id="news_window">
+                        <div class="news_window-title">
+                          <center>  News and Updates</center><br>
+                        </div>
+                        <iframe name="NewsIFrame" src="../../view/news_ops/news_window.php" frameborder="0" scrolling="no"></iframe><center>
+                        <a href="../../?controller=news_ops/add_news_con"><input type="submit" value="Add News"></a>
+                        <a href="../../?controller=news_ops/add_news_con"><input type="submit" value="Delete News"></a></center>
+                    </div>
+                    <div class="activities-div">
+                        <center><h1 style="color:black; background-color: #f1f1f1;border-radius:10px;">SOCIETIES</h1></center> 
+                        <?php foreach($activities as $activity): ?>
+                        <li>
+                            <h3><?php echo "Activity : ".$activity['name']."<br>"."Venue : ".$activity['venue']."<br>" ?>
+                                <p><?php echo "Date : ".$activity['date']."<br>"."Time : ".$activity['time'] ?></p>
+                            </h3>
+                            <hr>
+                            <?php endforeach; ?>
+
+                            <Center>
+                                <a href="../../?controller=church_activity_con"><input type="submit" value="Add New Activity"></a>
+                                <a href="../../?controller=delete_activity"><input type="submit" value="Delete Activity"></a>
+                            </Center>
+                    </div>
+                    <div class="activities-div">
+                        <center><h1 style="color:black; background-color: #f1f1f1;border-radius:10px;">COMMUNITIES</h1></center> 
+                        <?php foreach($activities as $activity): ?>
+                        <li>
+                            <h3><?php echo "Activity : ".$activity['name']."<br>"."Venue : ".$activity['venue']."<br>" ?>
+                                <p><?php echo "Date : ".$activity['date']."<br>"."Time : ".$activity['time'] ?></p>
+                            </h3>
+                            <hr>
+                            <?php endforeach; ?>
+
+                            <Center>
+                                <a href="../../?controller=church_activity_con"><input type="submit" value="Add New Activity"></a>
+                                <a href="../../?controller=delete_activity"><input type="submit" value="Delete Activity"></a>
+                            </Center>
+                    </div>
+                </div>
+            </div>
+        </main>
+        <footer role="footer">
+            <div class="footer">
+               &copy;Lawrant Group
+            </div>
+        </footer>
+        <script type="text/javascript" src="../../../scripts/home.js">
+        </script>
+    </body>
+
+</html>

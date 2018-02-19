@@ -1,0 +1,53 @@
+<!-- This is a view for home page. It has links to other sub categories -->
+<!-- It's controller is "home.php" -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>History</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="../styles/view_category.css">
+</head>
+<body>
+
+    <div class="header">
+         <div id="abuad-logo"> <a href="http://abuad.edu.ng" id="logo"><img src="http://www.abuad.edu.ng/wp-content/uploads/2017/03/logo-5.png"  data-retina="http://www.abuad.edu.ng/wp-content/uploads/2017/03/logo-6.png"  alt="Afe Babalola University" /></a></div>
+
+      <h1>ABUAD Catholic Church</h1>
+  </div>
+
+  <div class="topnav">
+    <a href="?controller=home">Home</a>
+</div>
+
+<ul>
+   <li> <a href="?controller=submit_category"><h2>Add a new category</h2></a></li>
+   <li><a href="?controller=delete_category"><h2>Delete a category</h2></a></li>
+   <li><a href="?controller=update_cat_con"><h2>Update Category</h2></a></li>
+</ul>
+<div class="background">
+    
+  <table>
+   <caption> <h1>List of existing categories</h1></caption>
+   <tr>
+    <th style="width:30%;">Category Name</th>
+    <th>Contacts</th>
+</tr>
+
+
+<?php foreach($categories as $cat) :?>
+  <tr>
+   <td><?php echo $cat['dept_name']?></td>
+   <td><?php echo $cat['phone']?></td>
+</tr>
+<?php endforeach; ?>
+</table>
+<!-- Add link to delete here, add link to add new category here -->
+</div>
+<div class="footer">
+  &copy;LAWRANT Group
+</div>
+</body>
+</html>
+
+

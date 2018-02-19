@@ -1,0 +1,171 @@
+
+<!DOCTYPE html>
+<html>
+<!-- This is a view for receiving details of a new user -->
+<!-- It's controller is "register.php" -->
+<head>
+	<title>Register</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body,html {
+            width: 100%;
+            margin: 0;
+            
+            
+        }
+        .header {
+            background-color: #f1f1f1;
+            padding: 20px;
+            text-align: center;
+            position: relative;
+        }
+        .footer {
+            background-color: #f1f1f1;
+            padding: 10px;
+            text-align: center;
+            margin-top: 10px;
+            width: 100%;
+                clear:both;
+        }
+        
+        .container {
+            
+            border-radius: 5px;
+            background-color: #f2f2f2;
+            padding: 20px;
+            width: 58%;
+            float: left;
+            margin: 0;
+    
+        
+
+        }
+        .slide {
+            width: 40%;
+            height: 100%;  
+            float: left;
+
+            right: 0;
+        
+            margin: 0;
+        }
+        .topnav {
+            overflow: hidden;
+            background-color: #333;
+            margin-bottom: 10px;
+        }
+        .topnav a {
+            float: right;
+            display: block;
+            color: #f2f2f2;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+        }
+        .topnav a:hover {
+            background-color: #ddd;
+            color: black;
+        }
+
+
+        
+        @media (max-width: 600px) {
+            .column.side, .column.middle {
+                width: 100%;
+            }
+        }
+        
+        input[type=text] {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+            margin-top: 6px;
+            margin-bottom: 16px;
+            resize: horizontal;
+        }
+        input[type=password] {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+            margin-top: 6px;
+            margin-bottom: 16px;
+            resize: horizontal;
+        }
+        input[type=submit] {
+            background-color: #4CAF50;
+            color: white;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        input[type=submit]:hover {
+            background-color: #45a049;
+        }
+
+        h2 {
+            text-align: center;
+        }
+
+        #abuad-logo {
+         float:left;
+         color: white;
+        
+     }
+    </style>
+</head>
+<body>
+
+    <div class="header">
+         <div id="abuad-logo"> <a href="http://abuad.edu.ng" id="logo"><img src="http://www.abuad.edu.ng/wp-content/uploads/2017/03/logo-5.png"  data-retina="http://www.abuad.edu.ng/wp-content/uploads/2017/03/logo-6.png"  alt="Afe Babalola University" /></a></div>
+
+      <h1>ABUAD Catholic Church</h1>
+  </div>
+
+  <div class="topnav">
+      <a href="?controller=home">Home</a><br>	
+  </div>
+  <div class="main">
+
+    <div class="container">
+      <form name="register" action="?controller=register" onsubmit="return validateForm()" method="POST">
+         Username  	<input type="text" name="username" minlength="4" maxlength="20" pattern="[^ @]*@[^ @]*" title="enter a valid email format" required><br>
+         Choose Password <input type="password" minlength="8" maxlength="20" name="password" required><br>
+         Confirm Password <input type="password" minlength="8" maxlength="20" name="passcon" required>
+          <center><input type="submit" value="Register"></center>
+         
+         <!-- error message if user already exists-->
+         <?php if(!empty($errorMessages)) :?>
+            <?php foreach($errorMessages as $key => $message): ?>
+               <div><span>Error:</span><?php echo $message?></div>
+           <?php endforeach; ?>
+        <?php endif; ?>
+
+   </form>
+</div>
+</div>
+<div class="slide">
+
+ <img class="mySlides w3-animate-fading" src="../image/images22.jpg" style="width:100%; height:340px;" >
+ <img class="mySlides w3-animate-fading" src="../image/church_sculpture_faith_230555.jpg" style="width:100%; height:340px;">
+ <img class="mySlides w3-animate-fading" src="../image/images14.jpg" style="width:100%;height:340px;">
+ <img class="mySlides w3-animate-fading" src="../image/candles_light_church_219127.jpg" style="width:100%;height:340px;">
+</div>
+<div class="footer">
+  &copy;LAWRANT Group
+</div>
+<script type="text/javascript" src="../scripts/register.js"> 
+</script>
+</body>
+</html>
+

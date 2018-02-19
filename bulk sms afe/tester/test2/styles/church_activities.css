@@ -1,0 +1,100 @@
+
+  body,html {
+    margin: 0;
+  }
+.footer {
+    background-color: #f1f1f1;
+    padding: 10px;
+    text-align: center;
+    margin: 0;
+}
+ .header {
+    background-color: #f1f1f1;
+    padding: 20px;
+    text-align: center;
+       
+
+  }
+  .topnav {
+    overflow: hidden;
+    background-color: #333;
+    margin: 0;
+  }
+  .topnav a {
+    float: right;
+    display: block;
+    color: #f2f2f2;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+     
+    
+  }
+  .topnav a:hover {
+    background-color: #ddd;
+    color: black;
+  }
+     #container
+    {   
+         background-image: url(../image/bible_book_catholic_265748.jpg);
+        background-repeat:no-repeat;
+        background-position: center;
+        background-size: cover;
+        margin: 0;
+        overflow: hidden;
+        max-width:  width: 100%;
+    }
+  h2 {
+    margin:0;
+  }
+
+ 
+  input[type=submit] {
+    background-color: green;
+    color:white;
+    font-weight: bold;
+    font-size: 1em;
+  }
+  input[type=text] {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+  }
+        
+     input[type=day] {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+         background-color: beige;
+}
+        input[type=time] {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+         background-color: beige;
+}
+.form {
+    width: 70%;
+    position: relative;
+    left: 10%;
+    padding: 10px;
+}
+  form {
+    font-weight: bold;
+      opacity: 0.7;
+
+  }
+#abuad-logo {
+         float:left;
+         color: white;
+        
+     }

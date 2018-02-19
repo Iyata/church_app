@@ -1,0 +1,210 @@
+<!-- This is a view for home page. It has links to other sub categories -->
+<!-- It's controller is "home.php" -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>home1</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="styles/home.css">
+  <link rel="stylesheet" href="styles/news_window.css">
+  <link href='https://fonts.googleapis.com/css?family=Bungee Shade' rel='stylesheet'>
+
+  <style type="text/css">
+    #comments
+    {
+      position: relative;
+      overflow: auto; 
+      height: 290px;
+      width:100%;
+    }
+  </style>
+</head>
+<body>
+ <header role="banner">
+  <img style="width:100%;height:200px;margin:0;" src="image/saint%20francis%20of%20assisi.jpg">
+</header>
+<div class="topnav">
+  <ul>
+    <li><a href="?controller=reg_ops/register">Sign Up</a></li>
+    <?php if(!isset($_SESSION['logged_in'])): ?>
+      <li><a href="?controller=auth_ops/login_panel">Login</a></li>
+    <?php elseif(isset($_SESSION['logged_in'])): ?>
+      <li><a href="?controller=auth_ops/logout">logout</a></li>
+      <li><a><?php echo $_SESSION['logged_in'] ?></a></li>
+    <?php endif; ?>
+
+    <li class="dropdown">
+      <a href="javascript:void(0)" class="dropbtn">Activities</a>
+      <div class="dropdown-content">
+        <div class="row">
+          
+          <div class="column side1">
+
+            <span>COMMUNITIES</span>
+            <a href="#">Igede Catholic Community</a>
+            <a href="#">Arewa Catholic Community</a>
+            <a href="#">Niger Delta Communities</a>
+            <a href="#">Igbo Catholic Community</a>
+          </div>
+          <div class="column middle1">
+            <span>SOCITIES</span>
+            <a href="#">Board of Lectors</a>
+            <a href="#">St Vincent De Paul</a>
+            <a href="#">Charismatic Renewal Movement</a>
+          </div>
+          <div class="column side1">   
+            <span>Organizations</span>
+            <a href="#">C.M.O</a>
+            <a href="#">C.W.O</a>
+            <a href="#">C.Y.O.N</a>
+          </div>
+        </div>
+      </div>
+    </li>
+
+    <li class="dropdown">
+      <a href="javascript:void(0)" class="dropbtn">Announcements</a>
+      <div class="dropdown-content">
+        <div class="row">
+
+          <div class="column side1">
+            <span>General Parish Announcements</span>
+            <a href="?controller=announce_ops/general_view_con">View All</a>
+            <?php if(isset($_SESSION['logged_in'])): ?>
+              <a href="?controller=announce_ops/general_add_con">Add New</a>
+              <a href="?controller=announce_ops/general_delete_con">Delete Some</a>
+            <?php endif; ?>
+          </div>
+
+          <div class="column side1">
+            <span>Marriage Banns</span>
+            <a href="?controller=announce_ops/marriage_bann_show_con">View Banns</a>
+            <?php if(isset($_SESSION['logged_in'])): ?>
+              <a href="?controller=announce_ops/marriage_bann_add_con">Add New Bann</a>
+              <a href="?controller=announce_ops/marriage_bann_del_con">Delete Bann</a>
+            <?php endif; ?>
+
+          </div>
+
+          <div class="column side1">
+            <span>Church Collections</span>
+            <a href="?controller=announce_ops/collection_view_con">View Collections</a>
+            <?php if(isset($_SESSION['logged_in'])): ?>
+              <a href="?controller=announce_ops/collection_add_con">Add Collections</a>
+              <a href="?controller=announce_ops/collection_delete_con">Delete Collections</a>
+            <?php endif; ?>
+          </div>
+
+        </div>
+      </div>
+    </li>
+
+    <li><a href="#">News</a></li>
+    <li><a href="?controller=home/general_home">Home</a></li>
+
+  </ul>
+</div>
+<main role="main">
+  <div id="container">
+    <marquee><span class="slide">SAINT FRANCIS CATHOLIC CHURCH GALADIMAWA</span></marquee>
+    <div class="row">
+      <div class="column middle">
+        <center> 
+          <ul class="mailing category">
+           <li> <a href="?controller=category_ops/mailing_categories"><h2><em>Manage mailing categories</em></h2> </a></li>
+           <li><a href="?controller=history_ops/history"><h2><em>History</em></h2></a></li>
+         </ul>
+       </center>
+       <div class="container1">
+        <form action="?controller=home/submit_message" method='POST'>
+
+          <center> <span style="color:white; font-size;2em;"><b>COMPOSE MESSAGE</b> </span></center> <br>                           <b> From:</b><br><input type="text" name="sender" placeholder='sender' maxlength="11" pattern="[a-zA-Z\s]+" title="Use only english alphabets a-z or A-Z" required><br><br>
+
+          <b>Message</b><br><textarea rows="5" cols="50" name="message" placeholder="message" minlength="10" maxlength="160" required></textarea><br><br>
+
+          <b> To:</b><br><textarea name='pasted_num' placeholder='receiver'></textarea><br>
+
+          <b>Or select category:</b><br>
+          <select name="dbcontact">
+            <option value=""></option>
+            <option value="*">All</option>
+            <?php foreach ($my_categories as $category):?>
+              <option value="<?php echo $category['dept_id']?>"><?php echo $category['dept_name']?></option>
+            <?php endforeach;?> 
+
+          </select><br><br>
+
+          <div class="form-group">
+            <b> New mailing list (.csv files only) </b><br>
+            <input type="file" name="csv_list"><br><br>
+            <input type="submit" value="Send">
+
+
+            <!--Error or success submission handlers-->
+            <?php if (!empty($successMessages)):?>
+              <?php foreach ($successMessages as $key => $message): ?>
+                <div style="color:white; font-size:50px;"><span>Success: </span><?php echo $message ?></div>
+              <?php endforeach; ?>
+            <?php endif; ?>
+
+            <?php if (!empty($errorMessages)):?>
+              <?php foreach ($errorMessages as $key => $message): ?>
+                <div style="color:red; font-size:50px;"><span>Error: </span><?php echo $message ?></div>
+              <?php endforeach; ?>
+            <?php endif; ?>
+
+            <?php if(!empty($channelMessage)):?>
+              <?php foreach($channelMessage as $key => $message): ?>
+                <div style="color:red; font-size:50px;"><span>Error: </span><?php echo $message?></div>
+              <?php endforeach; ?>
+            <?php endif; ?>
+          </div>
+        </form>
+      </div>
+
+    </div>
+    <div class="column side">
+      <div class="activities-div">
+        <div id="comments">
+          <center><h1 class="church activity">CHURCH ACTIVITIES</h1></center> 
+          <?php foreach($activities as $activity): ?>
+
+            <h3><?php echo "Activity : ".$activity['name']."<br>"."Venue : ".$activity['venue']."<br>" ?>
+              <h4><?php echo "Date : ".$activity['date']."<br>"."Time : ".$activity['time'] ?></h4>
+            </h3>
+            <hr>
+          <?php endforeach; ?>
+          
+        </div>
+
+      </div>
+
+    </div><center>
+    <div class="column side">
+      <div id="news_window">
+        <center> 
+          <div class="news_window-title">
+            News and Updates<br>
+          </div>
+        </center>
+        <iframe name="NewsIFrame" src="view/news_ops/news_window.php" frameborder="0" scrolling="no"></iframe>
+        
+      </div>
+    </div>
+  </center>
+</div>
+</div>
+</main>
+<footer role="footer">
+  <div class="footer">
+    &copy;Lawrant Group 2017
+  </div>
+</footer>
+
+<script type="text/javascript" src="scripts/home.js">
+</script>
+</body>
+
+</html>

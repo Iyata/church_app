@@ -1,0 +1,86 @@
+* {
+        box-sizing: border-box;
+    }
+
+    html,body {
+        width: 100%;
+        margin: 0;
+    }
+    .footer {
+        background-color: #f1f1f1;
+        padding: 10px;
+        text-align: center;
+        
+    }
+    .header {
+        background-color: #f1f1f1;
+        padding: 20px;
+        text-align: center;
+        
+    }
+    .topnav {
+        overflow: hidden;
+        background-color: #333;
+        margin: 0;
+    }
+    .topnav a {
+        float: right;
+        display: block;
+        color: #f2f2f2;
+        text-align: center;
+        padding: 14px 16px;
+        text-decoration: none;
+        
+    }
+    .topnav a:hover {
+        background-color: #ddd;
+        color: black;
+    }
+    .container {
+    margin: 0;
+        padding: 10px;
+        margin: 10px;
+        border: 1px solid black;
+        background-color: tan;
+        
+    }
+.background {
+    
+}
+h2 {
+        margin:0;
+    }
+    h1 {
+        text-align: center;
+    }
+    h2 {
+        margin-bottom: 0;
+    }
+    textarea {
+      overflow: auto;
+      width:80%;
+      padding: 12px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      box-sizing: border-box;
+      margin-top: 6px;
+      margin-bottom: 16px;
+      resize: horizontal;
+  }
+  .radio {
+    width: 80%;
+    background-color:beige;
+    margin-bottom: 10px;
+    
+}
+input[type=submit] {
+    background-color: green;
+    color:white;
+    font-weight: bold;
+    font-size: 1em;
+}
+    #abuad-logo {
+         float:left;
+         color: white;
+        
+     }

@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Delete  Marriage Bann</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="../../styles/collection_delete.css">
+  <link href='https://fonts.googleapis.com/css?family=Bungee Shade' rel='stylesheet'>
+</head>
+<body>
+ <header role="banner">
+  <img style="width:100%;height:200px;margin:0;" src="../../image/saint%20francis%20of%20assisi.jpg">
+</header>
+<div class="topnav">
+  <ul>
+    <li><a href="../../?controller=reg_ops/register">Sign Up</a></li>
+    <!-- This should later link to a user profile page -->
+    <?php if(!isset($_SESSION['logged_in'])): ?>
+      <li><a href="../../?controller=auth_ops/login_panel">Login</a></li>
+    <?php elseif(isset($_SESSION['logged_in'])): ?>
+      <li><a href="../../?controller=auth_ops/logout">logout</a></li>
+      <li><a><?php echo $_SESSION['logged_in'] ?></a></li>
+    <?php endif; ?>
+    <li class="dropdown">
+      <a href="javascript:void(0)" class="dropbtn">Activities</a>
+      <div class="dropdown-content">
+        <div class="row">
+          
+          <div class="column side1">
+
+            <span>COMMUNITIES</span>
+            <a href="#">Igede Catholic Community</a>
+            <a href="#">Arewa Catholic Community</a>
+            <a href="#">Niger Delta Communities</a>
+            <a href="#">Igbo Catholic Community</a>
+          </div>
+          <div class="column middle1">
+            <span>SOCITIES</span>
+            <a href="#">Board of Lectors</a>
+            <a href="#">St Vincent De Paul</a>
+            <a href="#">Charismatic Renewal Movement</a>
+          </div>
+          <div class="column side1">   
+            <span>Organizations</span>
+            <a href="#">C.M.O</a>
+            <a href="#">C.W.O</a>
+            <a href="#">C.Y.O.N</a>
+          </div>
+        </div>
+      </div>
+    </li>
+
+    <li class="dropdown">
+      <a href="javascript:void(0)" class="dropbtn">Announcements</a>
+      <div class="dropdown-content">
+        <div class="row">
+
+          <div class="column side1">
+            <span>General Parish Announcements</span>
+            <a href="../../?controller=announce_ops/general_view_con">View All</a>
+            <?php if(isset($_SESSION['logged_in'])): ?>
+              <a href="../../?controller=announce_ops/general_add_con">Add New</a>
+              <a href="../../?controller=announce_ops/general_delete_con">Delete Some</a>
+            <?php endif; ?>
+          </div>
+
+          <div class="column side1">
+            <span>Marriage Banns</span>
+            <a href="../../?controller=announce_ops/marriage_bann_show_con">View Banns</a>
+            <?php if(isset($_SESSION['logged_in'])): ?>
+              <a href="../../?controller=announce_ops/marriage_bann_add_con">Add New Bann</a>
+              <a href="../../?controller=announce_ops/marriage_bann_del_con">Delete Bann</a>
+            <?php endif; ?>
+
+          </div>
+
+          <div class="column side1">
+            <span>Church Collections</span>
+            <a href="../../?controller=announce_ops/collection_view_con">View Collections</a>
+            <?php if(isset($_SESSION['logged_in'])): ?>
+              <a href="../../?controller=announce_ops/collection_add_con">Add Collections</a>
+              <a href="../../?controller=announce_ops/collection_delete_con">Delete Collections</a>
+            <?php endif; ?>
+          </div>
+
+        </div>
+      </div>
+    </li>
+
+    <li><a href="#">News</a></li>
+    <li><a href="../../?controller=home/general_home">Home</a></li>
+
+  </ul>
+</div>
+<main role="main">
+  <marquee><span class="slide">SAINT FRANCIS CATHOLIC CHURCH GALADIMAWA</span></marquee>
+  <form name="bann_del" action="?controller=announce_ops/collection_delete_con" onsubmit="return validateForm()" method="POST">
+    <h1>Select collection to delete</h1>
+
+    <div class="table">
+      
+      <table>
+        <tr>
+          <th style="width:10px;">Select Collection</th>
+          <th>Purpose of collection</th>
+          <th>Date</th>
+        </tr>
+
+        <?php foreach ($collection as $announcement): ?>
+
+          <tr>
+
+            <td> <input type="radio" name="collection" value="<?php echo $announcement['id'];?>"></td>
+
+            <td><?php echo $announcement['purpose'].'<br>'; ?> </td>
+            <td><?php echo $announcement['date'].'<br>'; ?> </td>
+
+          </tr>
+
+        <?php endforeach; ?>
+      </table>
+    </div>
+    
+    <center><input type="submit" value="Delete"></center>
+
+    <?php if(!empty($successMessages)) :?>
+      <?php foreach($successMessages as $key => $message): ?>
+       <div><span>Success:</span><?php echo $message?></div>
+     <?php endforeach; ?>
+   <?php endif; ?>
+ </form>
+ <div>
+   <img class="mySlides w3-animate-fading" src="../../image/bible_book_catholic_265748.jpg" style="width:100%; height:500px;" >
+   <img class="mySlides w3-animate-fading" src="../../image/images12.jpg" style="width:100%;height:500px;">
+   <img class="mySlides w3-animate-fading" src="../../image/images15.jpg" style="width:100%;height:500px;">
+   <img class="mySlides w3-animate-fading" src="../../image/images17.jpg" style="width:100%;height:500px;">
+   <img class="mySlides w3-animate-fading" src="../../image/jesus_christ_son_of_god_264072.jpg" style="width:100%;height:500px;">
+   <img class="mySlides w3-animate-fading" src="../../image/images22.jpg" style="width:100%;height:500px;">
+   <img class="mySlides w3-animate-fading" src="../../image/images16.jpg" style="width:100%;height:500px;">
+ </div> 
+
+</main>
+<footer role="footer">
+  <div class="footer">
+   &copy;Lawrant Group
+ </div>
+</footer>
+<script type="text/javascript" src="../../scripts/update_category.js">
+</script>  
+</body>
+
+</html>
